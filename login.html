@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SquadConnect - Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+    
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    main {
+      padding: 40px;
+      max-width: 400px;
+      margin: auto;
+      text-align: center;
+    }
+    
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%; 
+      max-width: 300px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    button {
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+      border: none;
+    }
+    
+    button:hover {
+      background-color: #555;
+    }
+    
+    .toggle-link {
+      color: #333;
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    
+    .error {
+      color: red;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <main>
+    <div id="login-form">
+      <h2>Login</h2>
+      <input type="text" id="login-username" placeholder="Username" />
+      <input type="password" id="login-password" placeholder="Password" />
+      <button onclick="loginUser()">Login</button>
+      <div id="login-error" class="error"></div>
+      <div class="toggle-link" onclick="showSignup()">Don't have an account? Sign up</div>
+    </div>
+
+    <div id="signup-form" style="display: none;">
+      <h2>Create Account</h2>
+      <input type="text" id="signup-username" placeholder="Username" />
+      <input type="password" id="signup-password" placeholder="Password" />
+      <input type="password" id="signup-confirm" placeholder="Confirm Password" />
+      <button onclick="signupUser()">Create Account</button>
+      <div id="signup-error" class="error"></div>
+      <div class="toggle-link" onclick="showLogin()">Already have an account? Login</div>
+    </div>
+  </main>
+
+  <script>
+    function showLogin() {
+      document.getElementById('login-form').style.display = 'block';
+      document.getElementById('signup-form').style.display = 'none';
+      clearErrors();
+    }
+
+    function showSignup() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('signup-form').style.display = 'block';
+      clearErrors();
+    }
+
+    function clearErrors() {
+      document.getElementById('login-error').textContent = '';
+      document.getElementById('signup-error').textContent = '';
+    }
+
+    function loginUser() {
+      const username = document.getElementById('login-username').value;
+      const password = document.getElementById('login-password').value;
+      if (!username || !password) {
+        document.getElementById('login-error').textContent = 'Please fill in all fields';
+        return;
+      }
+      const users = JSON.parse(localStorage.getItem('squadconnect_users') || '{}');
+      if (users[username] && users[username] === password) {
+        localStorage.setItem('squadconnect_current_user', username);
+        window.location.href = 'index.html';
+      } else {
+        document.getElementById('login-error').textContent = 'Invalid username or password';
+      }
+    }
+
+    function signupUser() {
+      const username = document.getElementById('signup-username').value;
+      const password = document.getElementById('signup-password').value;
+      const confirm = document.getElementById('signup-confirm').value;
+      if (!username || !password || !confirm) {
+        document.getElementById('signup-error').textContent = 'Please fill in all fields';
+        return;
+      }
+      if (password !== confirm) {
+        document.getElementById('signup-error').textContent = 'Passwords do not match';
+        return;
+      }
+      if (username.length < 3) {
+        document.getElementById('signup-error').textContent = 'Username must be at least 3 characters';
+        return;
+      }
+      if (password.length < 4) {
+        document.getElementById('signup-error').textContent = 'Password must be at least 4 characters';
+        return;
+      }
+      const users = JSON.parse(localStorage.getItem('squadconnect_users') || '{}');
+      if (users[username]) {
+        document.getElementById('signup-error').textContent = 'Username already exists';
+        return;
+      }
+      users[username] = password;
+      localStorage.setItem('squadconnect_users', JSON.stringify(users));
+      localStorage.setItem('squadconnect_current_user', username);
+      window.location.href = 'index.html';
+    }
+
+    // Check if already logged in
+    if (localStorage.getItem('squadconnect_current_user')) {
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+</html>

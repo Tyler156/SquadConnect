@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- This tells the browser what type of document this is -->
+  <meta charset="UTF-8" />
+  <!-- This makes the website work well on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- This is the title that shows up in the browser tab -->
+  <title>SquadConnect</title>
+  <style>
+    /* This section controls how the website looks */
+    
+    /* Sets the font and removes default spacing for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    
+    /* Styles for the top header with the website name */
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Styles for the navigation menu bar */
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    
+    /* Styles for each link in the navigation menu */
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    
+    /* What happens when you hover over a navigation link */
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Shows which page you're currently on */
+    nav a.active {
+      text-decoration: underline;
+    }
+    
+    /* Container that holds the entire chat interface */
+    .chat-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    
+    /* Box that shows information about the group */
+    .group-info {
+      background-color: #f0f0f0;
+      padding: 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    /* Area where all the chat messages appear */
+    .messages {
+      flex: 1;
+      border: 1px solid #ddd;
+      padding: 20px;
+      overflow-y: auto;
+      background-color: #fafafa;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      min-height: 300px;
+    }
+    
+    /* Styles for individual chat messages */
+    .message {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    /* Header of each message showing who sent it and when */
+    .message-header {
+      font-weight: bold;
+      color: #666;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+    
+    /* Container for the message input box and send button */
+    .message-input {
+      display: flex;
+      gap: 10px;
+    }
+    
+    /* Styles for the text box where users type messages */
+    .message-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    
+    /* Styles for the send message button */
+    .message-input button {
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    
+    /* What happens when you hover over the send button */
+    .message-input button:hover {
+      background-color: #555;
+    }
+    
+    /* Styles for the footer at the bottom */
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+    }
+    
+    /* Styles for the calendar button */
+    .calendar-button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    
+    /* What happens when you hover over the calendar button */
+    .calendar-button:hover {
+      background-color: #45a049;
+    }
+    
+    /* Styles for the delete/leave chat button */
+    .delete-button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+    
+    /* What happens when you hover over the delete button */
+    .delete-button:hover {
+      background-color: #da190b;
+    }
+    
+    /* Styles for the modal popup that shows the calendar */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.5);
+    }
+    
+    /* The actual content box inside the modal */
+    .modal-content {
+      background-color: white;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    /* Header section of the calendar with navigation buttons */
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    /* Buttons to go to previous/next month */
+    .calendar-header button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    
+    /* X button to close the modal */
+    .close {
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    
+    /* What happens when you hover over the close button */
+    .close:hover {
+      color: #999;
+    }
+    
+    /* Grid layout for the calendar days */
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background-color: #ccc;
+    }
+    
+    /* Headers showing the days of the week */
+    .day-header {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    /* Individual day cells in the calendar */
+    .day {
+      background-color: white;
+      padding: 10px;
+      border: 1px solid #ddd;
+      min-height: 60px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    /* What happens when you hover over a day */
+    .day:hover {
+      background-color: #f9f9f9;
+    }
+    
+    /* Days that belong to other months (grayed out) */
+    .day.other-month {
+      color: #ccc;
+    }
+    
+    /* Days that have events scheduled */
+    .day.has-event {
+      background-color: #e3f2fd;
+    }
+    
+    /* Individual events displayed on calendar days */
+    .event {
+      background-color: #2196F3;
+      color: white;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-size: 11px;
+      margin-top: 2px;
+      word-break: break-word;
+    }
+    
+    /* Controls that only the group leader can see */
+    .leader-controls {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+    }
+    
+    /* Input boxes in the leader controls section */
+    .leader-controls input {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+    }
+    
+    /* Buttons in the leader controls section */
+    .leader-controls button {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The header section with the website name -->
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <!-- The navigation menu with links to other pages -->
+  <nav>
+    <!-- Link to the home page -->
+    <a href="index.html">Home</a>
+    <!-- Group Chats link - this page is currently active -->
+    <a href="groupchats.html" class="active">Group Chats</a>
+    <!-- Link to the about page -->
+    <a href="about.html">About</a>
+  </nav>
+
+  <!-- Main container for the chat interface -->
+  <div class="chat-container"> 
+    <!-- Box showing information about the current group -->
+    <div class="group-info">
+      <!-- Group name (loaded by JavaScript) -->
+      <h2 id="group-name">Loading...</h2>
+      <!-- Group code for others to join -->
+      <p>Group Code: <span id="group-code">Loading...</span></p>
+      <!-- Who is the leader of this group -->
+      <p id="group-leader">Leader: <span id="leader-name">Loading...</span></p>
+      <!-- Button to open the team calendar -->
+      <button id="calendar-btn" class="calendar-button">📅 Team Calendar</button>
+      <!-- Button to leave or delete the chat -->
+      <button id="delete-chat-btn" class="delete-button">🗑️ <span id="delete-btn-text">Leave Chat</span></button>
+    </div>
+
+    <!-- Area where all the chat messages are displayed -->
+    <div class="messages" id="messages">
+      <!-- Welcome message that appears when you first join -->
+      <div class="message">
+        <div class="message-header">System</div>
+        Welcome to the group chat! Start by sending a message below.
+      </div>
+    </div>
+
+    <!-- Input area for typing and sending new messages -->
+    <div class="message-input">
+      <!-- Text box where users type their message -->
+      <input type="text" id="message-input" placeholder="Type your message..." />
+      <!-- Button to send the message -->
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <!-- Modal popup that shows the team calendar -->
+  <div id="calendar-modal" class="modal">
+    <!-- The actual calendar content -->
+    <div class="modal-content">
+      <!-- Header with month navigation and close button -->
+      <div class="calendar-header">
+        <!-- Button to go to previous month -->
+        <button id="prev-month">&lt;</button>
+        <!-- Current month and year display -->
+        <h3 id="current-month">January 2025</h3>
+        <!-- Button to go to next month -->
+        <button id="next-month">&gt;</button>
+        <!-- X button to close the calendar -->
+        <span class="close">&times;</span>
+      </div>
+      <!-- Container for the calendar grid -->
+      <div class="calendar-grid">
+        <!-- The actual calendar with days -->
+        <div class="calendar">
+          <!-- Headers for each day of the week -->
+          <div class="day-header">Sun</div>
+          <div class="day-header">Mon</div>
+          <div class="day-header">Tue</div>
+          <div class="day-header">Wed</div>
+          <div class="day-header">Thu</div>
+          <div class="day-header">Fri</div>
+          <div class="day-header">Sat</div>
+          <!-- Container where the calendar days will be generated -->
+          <div id="calendar-days"></div>
+        </div>
+      </div>
+      <!-- Controls that only show if you're the group leader -->
+      <div id="leader-controls" class="leader-controls" style="display: none;">
+        <h4>Add Game/Event</h4>
+        <!-- Input for the event name -->
+        <input type="text" id="event-title" placeholder="Event title" />
+        <!-- Input for picking the event date -->
+        <input type="date" id="event-date" />
+        <!-- Button to add the event to the calendar -->
+        <button id="add-event-btn">Add Event</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 SquadConnect</p>
+  </footer>
+
+  <!-- This loads the JavaScript file that makes the chat work -->
+  <script src="chat.js"></script>
+</body>
+</html>

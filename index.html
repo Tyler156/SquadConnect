@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- This tells the browser what type of document this is -->
+  <meta charset="UTF-8" />
+  <!-- This makes the website work well on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- This is the title that shows up in the browser tab -->
+  <title>SquadConnect</title>
+  <style>
+    /* This section controls how the website looks */
+    
+    /* Controls the font and removes default spacing for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+    
+    /* Styles for the top header with the website name */
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Styles for the navigation menu bar */
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    
+    /* Styles for each link in the navigation menu */
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    
+    /* What happens when you hover over a navigation link */
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Shows which page you're currently on */
+    nav a.active {
+      text-decoration: underline;
+    }
+    
+    /* Styles for the main content area */
+    main {
+      padding: 40px;
+      text-align: center;
+    }
+    
+    /* Styles for the footer at the bottom */
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    /* Quick Actions Section */
+    .quick-actions {
+      margin: 30px 0;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 15px;
+    }
+
+    .action-btn {
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s;
+      display: inline-block;
+    }
+
+    .action-btn:hover {
+      background-color: #555;
+    }
+
+    /* Features Grid */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background-color: #f9f9f9;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    .feature-card h4 {
+      margin-top: 0;
+      color: #333;
+      font-size: 18px;
+    }
+
+    /* Recent Activity */
+    .recent-activity {
+      margin: 40px 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+    }
+
+    .recent-group-item {
+      background-color: white;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border-left: 4px solid #333;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .recent-group-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .recent-group-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .recent-group-code {
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The header section with the website name -->
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <!-- The navigation menu with links to other pages -->
+  <nav>
+    <!-- Home link -->
+    <a href="index.html" class="active">Home</a>
+    <!-- Link to the group chats page -->
+    <a href="groupchats.html">Group Chats</a>
+    <!-- Link to the about page -->
+    <a href="about.html">About</a>
+    <!-- Logout link -->
+    <a href="#" onclick="logout()" style="float: right;">Logout (<span id="current-user"></span>)</a>
+  </nav>
+
+  <!-- The main content area -->
+  <main>
+    <!-- Welcome message explaining what the website does -->
+    <h2>Welcome to SquadConnect</h2>
+    
+    
+    <!-- Quick Actions Section -->
+    <div class="quick-actions">
+      <h3>Quick Actions</h3>
+      <div class="action-buttons">
+        <a href="groupchats.html" class="action-btn">💬 Join Chat</a>
+        <a href="groupchats.html" class="action-btn">➕ Create Group</a>
+        <a href="about.html" class="action-btn">ℹ️ Learn More</a>
+      </div>
+    </div>
+
+    <!-- Features Overview -->
+    <div class="features-grid">
+      <div class="feature-card">
+        <h4>🗨️ Team Chat</h4>
+        <p>Stay connected with real-time group messaging</p>
+      </div>
+      <div class="feature-card">
+        <h4>📅 Shared Calendar</h4>
+        <p>Schedule games and events together</p>
+      </div>
+      <div class="feature-card">
+        <h4>👥 Easy Setup</h4>
+        <p>Simple group codes make joining effortless</p>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div id="home-recent-activity" class="recent-activity">
+      <h3>Your Recent Groups</h3>
+      <div id="home-recent-list">
+        <p>No recent groups. <a href="groupchats.html">Create or join one now!</a></p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 SquadConnect.</p>
+  </footer>
+
+<script>
+    // Check if user is logged in
+    function checkAuth() {
+      const currentUser = localStorage.getItem('squadconnect_current_user');
+      if (!currentUser) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      document.getElementById('current-user').textContent = currentUser;
+      return true;
+    }
+
+    function logout() {
+      localStorage.removeItem('squadconnect_current_user');
+      window.location.href = 'login.html';
+    }
+
+    // Display recent groups on home page
+    function displayHomeRecentGroups() {
+      try {
+        const stored = localStorage.getItem('squadconnect_recent_chats');
+        const recentChats = stored ? JSON.parse(stored) : [];
+        const recentList = document.getElementById('home-recent-list');
+        
+        if (recentChats.length === 0) {
+          recentList.innerHTML = '<p>No recent groups. <a href="groupchats.html">Create or join one now!</a></p>';
+          return;
+        }
+        
+        recentList.innerHTML = '';
+        recentChats.slice(0, 3).forEach(chat => {
+          const groupDiv = document.createElement('div');
+          groupDiv.className = 'recent-group-item';
+          groupDiv.onclick = () => window.location.href = `chat.html?group=${chat.code}`;
+          
+          groupDiv.innerHTML = `
+            <div class="recent-group-name">${chat.name}</div>
+            <div class="recent-group-code">Code: ${chat.code}</div>
+          `;
+          
+          recentList.appendChild(groupDiv);
+        });
+      } catch (error) {
+        console.error('Error displaying recent groups:', error);
+      }
+    }
+
+    // Load recent groups when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+      if (checkAuth()) {
+        displayHomeRecentGroups();
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- This tells the browser what type of document this is -->
+  <meta charset="UTF-8" />
+  <!-- This makes the website work well on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- This is the title that shows up in the browser tab -->
+  <title>SquadConnect</title>
+  <style>
+    /* This section controls how the website looks */
+    
+    /* Sets the font and removes default spacing for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+    
+    /* Styles for the top header with the website name */
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Styles for the navigation menu bar */
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    
+    /* Styles for each link in the navigation menu */
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    
+    /* What happens when you hover over a navigation link */
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Shows which page you're currently on */
+    nav a.active {
+      text-decoration: underline;
+    }
+    
+    /* Styles for the main content area */
+    main {
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+      text-align: center;
+    }
+    
+    /* Styles for input boxes and buttons */
+    input, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%; 
+      max-width: 400px;
+      font-size: 16px;
+    }
+    
+    /* Styles for boxes that show recent chat groups */
+    .recent-chat {
+      background-color: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    /* What happens when you hover over a recent chat box */
+    .recent-chat:hover {
+      background-color: #e9e9e9;
+    }
+    
+    /* Styles for the chat group name */
+    .chat-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    
+    /* Styles for the chat group code */
+    .chat-code {
+      color: #666;
+      font-size: 14px;
+    }
+    
+    /* Styles for the date when you last visited the chat */
+    .chat-date {
+      color: #999;
+      font-size: 12px;
+    }
+    
+    /* Styles for the footer at the bottom */
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The header section with the website name -->
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <!-- The navigation menu with links to other pages -->
+  <nav>
+    <!-- Link to the home page -->
+    <a href="index.html">Home</a>
+    <!-- Group Chats link - this page is currently active -->
+    <a href="Group Chats.html" class="active">Group Chats</a>
+    <!-- Link to the about page -->
+    <a href="about.html">About</a>
+    <!-- Logout link -->
+    <a href="#" onclick="logout()" style="float: right;">Logout (<span id="current-user"></span>)</a>
+  </nav>
+
+  <!-- The main  area where users can join or create groups -->
+  <main>
+    <!-- Section for showing chats you've visited before -->
+    <div id="recent-chats" style="display: none;">
+      <h2>Recent Chats</h2>
+      <!-- Container where recent chat groups will appear -->
+      <div id="recent-chats-list">
+        <!-- Recent chats will be loaded here -->
+      </div>
+    </div>
+
+    <!-- Section for joining an existing group -->
+    <h2>Join a Group</h2>
+    <!-- Input box where users type a group code -->
+    <input type="text" placeholder="Enter group code" />
+    <!-- Button to join the group -->
+    <button>Join Group</button>
+
+    <!-- Section for creating a new group -->
+    <h2>Or Create a New Group</h2>
+    <!-- Input box where users type a name for their new group -->
+    <input type="text" placeholder="Enter new group name" />
+    <!-- Button to create the new group -->
+    <button>Create Group</button>
+
+  </main>
+
+  <!-- Footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 SquadConnect</p>
+  </footer>
+
+  <!-- This loads the JavaScript file that makes the page interactive and able to use -->
+  <script src="script.js"></script>
+</body>
+</html>

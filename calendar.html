@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SquadConnect</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    nav a.active {
+      text-decoration: underline;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background-color: #ccc;
+      margin: 20px 0;
+      border: 1px solid #ccc;
+    }
+    .day {
+      background-color: white;
+      padding: 10px;
+      border: 1px solid #ddd;
+      min-height: 80px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      font-weight: bold;
+    }
+    .day-header {
+      background-color: #f0f0f0;
+      font-weight: bold;
+      padding: 10px;
+
+
+      text-align: center;
+    }
+    .day.other-month {
+      color: #ccc;
+      background-color: #f9f9f9;
+    }
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .calendar-header button {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .calendar-header button:hover {
+      background-color: #555;
+    }
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="groupchats.html">Group Chats</a>
+    <a href="calendar.html" class="active">Calendar</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main>
+    <div class="calendar-header">
+      <button id="prev-month">&lt;</button>
+      <h2 id="current-month">January 2025</h2>
+      <button id="next-month">&gt;</button>
+    </div>
+    <div class="calendar">
+      <div class="day-header">Sun</div>
+      <div class="day-header">Mon</div>
+      <div class="day-header">Tue</div>
+      <div class="day-header">Wed</div>
+      <div class="day-header">Thu</div>
+      <div class="day-header">Fri</div>
+      <div class="day-header">Sat</div>
+      <div id="calendar-days"></div>
+    </div>
+    
+  </main>
+
+  <footer>
+    <p>&copy; 2025 SquadConnect</p>
+  </footer>
+
+</body>
+
+
+
+  <script>
+    class CalendarManager {
+      constructor() {
+        this.currentDate = new Date();
+        this.init();
+      }
+
+      init() {
+        document.getElementById('prev-month').addEventListener('click', () => {
+          this.changeMonth(-1);
+        });
+        
+        document.getElementById('next-month').addEventListener('click', () => {
+          this.changeMonth(1);
+        });
+
+        this.renderCalendar();
+      }
+
+      changeMonth(direction) {
+        this.currentDate.setMonth(this.currentDate.getMonth() + direction);
+        this.renderCalendar();
+      }
+
+      renderCalendar() {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"];
+        
+        const currentMonthElement = document.getElementById('current-month');
+        currentMonthElement.textContent = `${monthNames[this.currentDate.getMonth()]} ${this.currentDate.getFullYear()}`;
+        
+        const daysContainer = document.getElementById('calendar-days');
+        daysContainer.innerHTML = '';
+        
+        const firstDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+        const lastDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 0);
+        const startDate = new Date(firstDay);
+        startDate.setDate(startDate.getDate() - firstDay.getDay());
+        
+        for (let i = 0; i < 42; i++) {
+          const cellDate = new Date(startDate);
+          cellDate.setDate(startDate.getDate() + i);
+          
+          const dayElement = document.createElement('div');
+          dayElement.className = 'day';
+          dayElement.textContent = cellDate.getDate();
+          
+          if (cellDate.getMonth() !== this.currentDate.getMonth()) {
+            dayElement.classList.add('other-month');
+          }
+          
+          daysContainer.appendChild(dayElement);
+        }
+      }
+    }
+
+    // Initialize calendar when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      new CalendarManager();
+    });
+  </script>
+</html>

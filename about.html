@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- This tells the browser what type of document this is -->
+  <meta charset="UTF-8" />
+  <!-- This makes the website work well on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- This is the title that shows up in the browser tab -->
+  <title>SquadConnect</title>
+  <style>
+    /* This section controls how the website looks */
+    
+    /* Sets the font and removes default spacing for the whole page */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      color: black;
+    }
+    
+    /* Styles for the top header with the website name */
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    /* Styles for the navigation menu bar */
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    
+    /* Styles for each link in the navigation menu */
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    
+    /* What happens when you hover over a navigation link */
+    nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Shows which page you're currently on */
+    nav a.active {
+      text-decoration: underline;
+    }
+    
+    /* Styles for the main content area with padding and centered text */
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      line-height: 1.6;
+    }
+    
+    /* Styles for feature boxes that highlight different website features */
+    .feature {
+      background-color: #f9f9f9;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 5px;
+    }
+    
+    /* Styles for the footer at the bottom */
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- The header section with the website name -->
+  <header>
+    <h1>SquadConnect</h1>
+  </header>
+
+  <!-- The navigation menu with links to other pages -->
+  <nav>
+    <!-- Link to the home page -->
+    <a href="index.html">Home</a>
+    <!-- Link to the group chats page -->
+    <a href="groupchats.html">Group Chats</a>
+    <!-- About link - this page is currently active -->
+    <a href="about.html" class="active">About</a>
+    <!-- Logout link -->
+    <a href="#" onclick="logout()" style="float: right;">Logout (<span id="current-user"></span>)</a>
+  </nav>
+
+  <!-- The main content area with information about the website -->
+  <main>
+    <!-- Main heading explaining what the website is -->
+    <h2>What is SquadConnect?</h2>
+    <!-- Description of what the website does -->
+    <p>SquadConnect is a website where your sports team can work together and stay connected. You can use it to organize your games or just keep in touch with your team.</p>
+
+    <!-- Feature box explaining group chats -->
+    <div class="feature">
+      <h3>Group Chats</h3>
+      <p>Create and join group chats to communicate with your team members. Share ideas, send out the dates to the games and stay connected wherever you are.</p>
+    </div>
+
+    <!-- Feature box explaining the team calendar -->
+    <div class="feature">
+
+  <script>
+    function checkAuth() {
+      const currentUser = localStorage.getItem('squadconnect_current_user');
+      if (!currentUser) {
+        window.location.href = 'login.html';
+        return false;
+      }
+      document.getElementById('current-user').textContent = currentUser;
+      return true;
+    }
+
+    function logout() {
+      localStorage.removeItem('squadconnect_current_user');
+      window.location.href = 'login.html';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      checkAuth();
+    });
+  </script>
+
+      <h3>Team Calendar</h3>
+      <p>Each group chat has its own calendar where the group leader can schedule games and events. Access the calendar directly from your chat interface.</p>
+    </div>
+
+    <!-- Feature box explaining ease of use -->
+    <div class="feature">
+      <h3>Easy to Use</h3>
+      <p>Our good simple design makes it easy for teams of any size to get in contact. Their is no complicated setup required.</p>
+    </div>
+
+    <!-- Section encouraging users to get started -->
+    <h2>Get Started Today</h2>
+    <!-- Instructions on how to begin using the website -->
+    <p>Ready to improve your team's collaboration? Head over to our <a href="Group Chats.html">Group Chats</a> page to create or join a group. Once you're in a chat, use the team calendar to schedule your games and events!</p>
+  </main>
+
+  <!-- Footer with copyright information -->
+  <footer>
+    <p>&copy; 2025 SquadConnect</p>
+  </footer>
+
+</body>
+</html>
