@@ -25,6 +25,7 @@ body {
     padding: 0;
     background-color: white;
     color: black;
+    padding-bottom: 60px;
 }
 
 
@@ -90,7 +91,7 @@ main {
     background-color: #fafafa;
     border-radius: 5px;
     margin-bottom: 20px;
-    min-height: 300px;
+    min-height: 250px;
 }
 
 /* Styles for individual chat messages */
