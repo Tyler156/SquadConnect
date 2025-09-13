@@ -65,12 +65,12 @@ class ChatManager {
       } else {
         // Group doesn't exist so show error and go back
         alert('Group not found!');
-        window.location.href = 'Group Chats.html';
+        window.location.href = 'GroupChats.html';
       }
     } else {
       // No group code in web address so go back
       alert('No group specified!');
-      window.location.href = 'Group Chats.html';
+      window.location.href = 'GroupChats.html';
     }
   }
 
@@ -420,7 +420,7 @@ class ChatManager {
       this.removeFromRecentChats(this.currentGroupCode);
       
       alert('Group deleted successfully!');
-      window.location.href = 'Group Chats.html';
+      window.location.href = 'GroupChats.html';
     } catch (error) {
       console.error('Error deleting group:', error);
       alert('Error deleting group. Please try again.');
@@ -433,7 +433,7 @@ class ChatManager {
       this.removeFromRecentChats(this.currentGroupCode);
       
       alert('You have left the chat!');
-      window.location.href = 'Group Chats.html';
+      window.location.href = 'GroupChats.html';
     } catch (error) {
       console.error('Error leaving chat:', error);
       alert('Error leaving chat. Please try again.');

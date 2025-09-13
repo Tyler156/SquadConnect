@@ -208,7 +208,7 @@ function handleCreateGroup() {
       groupManager.addToRecentChats(groupCode, groupName);
       
       // Show success message with group info
-      alert(`Group "${groupName}" created!\nGroup Code: ${groupCode}\nYou are the group leader.\nRedirecting to chat...`);
+      //alert(`Group "${groupName}" created!\nGroup Code: ${groupCode}\nYou are the group leader.\nRedirecting to chat...`);
       // Clear the text box
       groupNameInput.value = '';
       // Go to the chat page for this group
@@ -240,7 +240,7 @@ function handleJoinGroup() {
       groupManager.addToRecentChats(groupCode, group.name);
       
       // Show success message
-      alert(`Successfully joined "${group.name}"!\nRedirecting to chat...`);
+      //alert(`Successfully joined "${group.name}"!\nRedirecting to chat...`);
       // Clear the text box
       groupCodeInput.value = '';
       // Go to the chat page for this group
@@ -261,11 +261,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('button');
   // Go through each button and add click events
   buttons.forEach(button => {
-    // If this button says "Create Group", make it run the create function
-    if (button.textContent.includes('Create Group')) {
+    // If this button says "Create Group" or "Create Team", make it run the create function
+    if (button.textContent.includes('Create Group') || button.textContent.includes('Create Team')) {
       button.addEventListener('click', handleCreateGroup);
-    // If this button says "Join Group", make it run the join function
-    } else if (button.textContent.includes('Join Group')) {
+    // If this button says "Join Group" or "Join Team", make it run the join function
+    } else if (button.textContent.includes('Join Group') || button.textContent.includes('Join Team')) {
       button.addEventListener('click', handleJoinGroup);
     }
   });
