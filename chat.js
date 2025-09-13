@@ -55,7 +55,7 @@ class ChatManager {
         // Change the delete button text based on if user is leader
         const deleteBtn = document.getElementById('delete-btn-text');
         if (this.isLeader) {
-          deleteBtn.textContent = 'Delete Group';
+          deleteBtn.textContent = 'Delete Team';
         } else {
           deleteBtn.textContent = 'Leave Chat';
         }
@@ -388,7 +388,7 @@ class ChatManager {
   handleDeleteChat() {
     if (this.isLeader) {
       // Leader can delete the entire group
-      const confirmDelete = confirm('Are you sure you want to delete this entire group? This will remove all messages, events, and data for all members. This action cannot be undone.');
+      const confirmDelete = confirm('Are you sure you want to delete this entire team? This will remove all messages, events, and data for all members. This action cannot be undone.');
       
       if (confirmDelete) {
         this.deleteEntireGroup();

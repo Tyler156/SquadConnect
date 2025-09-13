@@ -186,7 +186,7 @@ const groupManager = new GroupManager();
 // This function runs when user clicks create group button
 function handleCreateGroup() {
   // Find the text box where user typed the group name
-  const groupNameInput = document.querySelector('input[placeholder="Enter new group name"]');
+  const groupNameInput = document.querySelector('input[placeholder="Enter new team name"]');
   // Get the group name and remove extra spaces
   const groupName = groupNameInput.value.trim();
   
@@ -223,7 +223,7 @@ function handleCreateGroup() {
 // This function runs when user clicks join group button
 function handleJoinGroup() {
   // Find the text box where user typed the group code
-  const groupCodeInput = document.querySelector('input[placeholder="Enter group code"]');
+  const groupCodeInput = document.querySelector('input[placeholder="Enter team code"]');
   // Get the group code, remove spaces, and make it uppercase
   const groupCode = groupCodeInput.value.trim().toUpperCase();
   

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="images/Favicon.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="imagesapple-touch-icon.png">
   <!-- This tells the browser what type of document this is -->
   <meta charset="UTF-8" />
   <!-- This makes the website work well on mobile phones -->
@@ -13,129 +13,24 @@
   <script src="nav.js"></script>
   <link rel="stylesheet" href="nav.css">
 
+  <!-- Include the main styles for the website -->
+  <link rel="stylesheet" href="styles.css">
+
   <title>SquadConnect</title>
   <style>
     /* This section controls how the website looks */
     
-    /* Controls the font and removes default spacing for the whole page */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: white;
-      color: black;
-    }
+  
     
-    /* Styles for the top header with the website name */
-    header {
-      background-color: black;
-      color: white;
-      padding: 1px;
-      text-align: center;
-    }
+
     
     
+
     
-    /* Styles for the main content area */
-    main {
-      padding: 40px;
-      text-align: center;
-    }
-    
-    /* Styles for the footer at the bottom */
-    footer {
-      background-color: #eee;
-      text-align: center;
-      padding: 10px;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-
-    /* Quick Actions Section */
-    .quick-actions {
-      margin: 30px 0;
-    }
-
-    .action-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
-
-    .action-btn {
-      background-color: #333;
-      color: white;
-      text-decoration: none;
-      padding: 15px 25px;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s;
-      display: inline-block;
-    }
-
-    .action-btn:hover {
-      background-color: #555;
-    }
-
-    /* Features Grid */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin: 40px 0;
-    }
-
-    .feature-card {
-      background-color: #f9f9f9;
-      padding: 25px;
-      border-radius: 10px;
-      text-align: center;
-      border: 1px solid #ddd;
-    }
-
-    .feature-card h4 {
-      margin-top: 0;
-      color: #333;
-      font-size: 18px;
-    }
-
-    /* Recent Activity */
-    .recent-activity {
-      margin: 40px 0;
-      padding: 20px;
-      background-color: #f5f5f5;
-      border-radius: 8px;
-    }
-
-    .recent-group-item {
-      background-color: white;
-      padding: 15px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border-left: 4px solid #333;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .recent-group-item:hover {
-      background-color: #f0f0f0;
-    }
-
-    .recent-group-name {
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .recent-group-code {
-      color: #666;
-      font-size: 14px;
-    }
   </style>
+
 </head>
-<body>
+<body id="home-page">
 
   <!-- The header section with the website name -->
   <header>
