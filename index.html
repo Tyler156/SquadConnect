@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#FFFFFF">
+
+  <!-- iOS specific -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="SquadConnect">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+
   <link rel="icon" type="image/png" href="images/Favicon.png">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+ 
   <!-- This tells the browser what type of document this is -->
   <meta charset="UTF-8" />
   <!-- This makes the website work well on mobile phones -->
@@ -75,7 +86,7 @@
     <div id="home-recent-activity" class="recent-activity">
       <h3>Your Recent Teams</h3>
       <div id="home-recent-list">
-        <p>No recent teams. <a href="groupchats.html">Create or join one now!</a></p>
+        <p>No recent teams. <a href="/groupchats.html">Create or join one now!</a></p>
       </div>
     </div>
   </main>
