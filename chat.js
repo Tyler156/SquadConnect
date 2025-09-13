@@ -344,7 +344,7 @@ class ChatManager {
     const selectedDate = new Date(date + 'T00:00:00');
     const localDateString = selectedDate.getFullYear() + '-' + 
       String(selectedDate.getMonth() + 1).padStart(2, '0') + '-' + 
-      String(selectedDate.getDate()).padStart(2, '0');
+      String(selectedDate.getDate()-1).padStart(2, '0');
     
     const event = {
       title: title,

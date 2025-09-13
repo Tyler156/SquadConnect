@@ -3,9 +3,15 @@
 <head>
   <!-- This tells the browser what type of document this is -->
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/apple-touch-icon.png" sizes="192x192"/>
   <!-- This makes the website work well on mobile phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <!-- This is the title that shows up in the browser tab -->
+
+  <!-- Include the nav.js script and style sheet -->
+  <script src="nav.js" defer></script>
+  <link rel="stylesheet" href="nav.css">
+
   <title>SquadConnect</title>
   <style>
     /* This section controls how the website looks */
@@ -19,39 +25,15 @@
       color: black;
     }
     
-    /* Styles for the top header with the website name */
+   /* Styles for the top header with the website name */
     header {
       background-color: black;
       color: white;
-      padding: 20px;
+      padding: 1px;
       text-align: center;
     }
     
-    /* Styles for the navigation menu bar */
-    nav {
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-    }
-    
-    /* Styles for each link in the navigation menu */
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    
-    /* What happens when you hover over a navigation link */
-    nav a:hover {
-      text-decoration: underline;
-    }
-    
-    /* Shows which page you're currently on */
-    nav a.active {
-      text-decoration: underline;
-    }
+   
     
     /* Styles for the main content area */
     main {
@@ -116,20 +98,10 @@
 
   <!-- The header section with the website name -->
   <header>
-    <h1>SquadConnect</h1>
+    <div id="nav-placeholder"></div>
   </header>
 
-  <!-- The navigation menu with links to other pages -->
-  <nav>
-    <!-- Link to the home page -->
-    <a href="index.html">Home</a>
-    <!-- Group Chats link - this page is currently active -->
-    <a href="Group Chats.html" class="active">Group Chats</a>
-    <!-- Link to the about page -->
-    <a href="about.html">About</a>
-    <!-- Logout link -->
-    <a href="#" onclick="logout()" style="float: right;">Logout (<span id="current-user"></span>)</a>
-  </nav>
+
 
   <!-- The main  area where users can join or create groups -->
   <main>
@@ -143,18 +115,18 @@
     </div>
 
     <!-- Section for joining an existing group -->
-    <h2>Join a Group</h2>
+    <h2>Join a Team</h2>
     <!-- Input box where users type a group code -->
     <input type="text" placeholder="Enter group code" />
     <!-- Button to join the group -->
-    <button>Join Group</button>
+    <button>Join Team</button>
 
     <!-- Section for creating a new group -->
-    <h2>Or Create a New Group</h2>
+    <h2>Or Create a New Team</h2>
     <!-- Input box where users type a name for their new group -->
     <input type="text" placeholder="Enter new group name" />
     <!-- Button to create the new group -->
-    <button>Create Group</button>
+    <button>Create Team</button>
 
   </main>
 

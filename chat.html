@@ -3,8 +3,12 @@
 <head>
   <!-- This tells the browser what type of document this is -->
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="images/apple-touch-icon.png" sizes="192x192"/>
   <!-- This makes the website work well on mobile phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <!-- Include the nav.js script and style sheet -->
+  <script src="nav.js"></script>
+  <link rel="stylesheet" href="nav.css">
   <!-- This is the title that shows up in the browser tab -->
   <title>SquadConnect</title>
   <style>
@@ -26,35 +30,11 @@
     header {
       background-color: black;
       color: white;
-      padding: 20px;
+      padding: 1px;
       text-align: center;
     }
     
-    /* Styles for the navigation menu bar */
-    nav {
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-    }
-    
-    /* Styles for each link in the navigation menu */
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    
-    /* What happens when you hover over a navigation link */
-    nav a:hover {
-      text-decoration: underline;
-    }
-    
-    /* Shows which page you're currently on */
-    nav a.active {
-      text-decoration: underline;
-    }
+   
     
     /* Container that holds the entire chat interface */
     .chat-container {
@@ -318,18 +298,10 @@
 
   <!-- The header section with the website name -->
   <header>
-    <h1>SquadConnect</h1>
+    <div id="nav-placeholder"></div>
   </header>
 
-  <!-- The navigation menu with links to other pages -->
-  <nav>
-    <!-- Link to the home page -->
-    <a href="index.html">Home</a>
-    <!-- Group Chats link - this page is currently active -->
-    <a href="groupchats.html" class="active">Group Chats</a>
-    <!-- Link to the about page -->
-    <a href="about.html">About</a>
-  </nav>
+
 
   <!-- Main container for the chat interface -->
   <div class="chat-container"> 
@@ -338,9 +310,9 @@
       <!-- Group name (loaded by JavaScript) -->
       <h2 id="group-name">Loading...</h2>
       <!-- Group code for others to join -->
-      <p>Group Code: <span id="group-code">Loading...</span></p>
+      <p>Team Code: <span id="group-code">Loading...</span></p>
       <!-- Who is the leader of this group -->
-      <p id="group-leader">Leader: <span id="leader-name">Loading...</span></p>
+      <p id="group-leader">Team Manager/Coach: <span id="leader-name">Loading...</span></p>
       <!-- Button to open the team calendar -->
       <button id="calendar-btn" class="calendar-button">📅 Team Calendar</button>
       <!-- Button to leave or delete the chat -->
@@ -352,7 +324,7 @@
       <!-- Welcome message that appears when you first join -->
       <div class="message">
         <div class="message-header">System</div>
-        Welcome to the group chat! Start by sending a message below.
+        Welcome to the team chat! Start by sending a message below.
       </div>
     </div>
 

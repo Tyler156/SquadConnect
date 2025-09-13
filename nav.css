@@ -1,0 +1,82 @@
+/* General nav styles */
+#main-nav {
+  background: black; /* theme colour */
+  color: #fff;
+  font-family: sans-serif;
+   text-align: center;
+}
+
+/* Header area with logo + hamburger */
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+
+}
+
+.nav-header .logo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.nav-toggle {
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Links (mobile default = hidden) */
+.nav-links {
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  background: black;
+}
+
+.nav-links.show {
+  display: flex;
+}
+
+.nav-links li {
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.nav-links a {
+  display: block;
+  padding: 12px 15px;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* What happens when you hover over a navigation link */
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-links a.active {
+  text-decoration: bold;
+  background: #0056b3; /* active page highlight */
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+  .nav-links {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .nav-links li {
+    border: none;
+  }
+  .nav-links a {
+    padding: 15px 20px;
+  }
+}

@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" type="image/png" href="/images/apple-touch-icon.png" sizes="192x192"/>
   <!-- This tells the browser what type of document this is -->
   <meta charset="UTF-8" />
   <!-- This makes the website work well on mobile phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <!-- This is the title that shows up in the browser tab -->
+
+  <!-- Include the nav.js script and style sheet -->
+  <script src="nav.js" defer></script>
+  <link rel="stylesheet" href="nav.css">
+
   <title>SquadConnect</title>
   <style>
     /* This section controls how the website looks */
@@ -23,35 +29,11 @@
     header {
       background-color: black;
       color: white;
-      padding: 20px;
+      padding: 1px;
       text-align: center;
     }
     
-    /* Styles for the navigation menu bar */
-    nav {
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      padding: 10px;
-    }
     
-    /* Styles for each link in the navigation menu */
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    
-    /* What happens when you hover over a navigation link */
-    nav a:hover {
-      text-decoration: underline;
-    }
-    
-    /* Shows which page you're currently on */
-    nav a.active {
-      text-decoration: underline;
-    }
     
     /* Styles for the main content area */
     main {
@@ -156,20 +138,10 @@
 
   <!-- The header section with the website name -->
   <header>
-    <h1>SquadConnect</h1>
+    <div id="nav-placeholder"></div>
   </header>
 
-  <!-- The navigation menu with links to other pages -->
-  <nav>
-    <!-- Home link -->
-    <a href="index.html" class="active">Home</a>
-    <!-- Link to the group chats page -->
-    <a href="groupchats.html">Group Chats</a>
-    <!-- Link to the about page -->
-    <a href="about.html">About</a>
-    <!-- Logout link -->
-    <a href="#" onclick="logout()" style="float: right;">Logout (<span id="current-user"></span>)</a>
-  </nav>
+  
 
   <!-- The main content area -->
   <main>
@@ -182,7 +154,7 @@
       <h3>Quick Actions</h3>
       <div class="action-buttons">
         <a href="groupchats.html" class="action-btn">💬 Join Chat</a>
-        <a href="groupchats.html" class="action-btn">➕ Create Group</a>
+        <a href="groupchats.html" class="action-btn">➕ Create Team</a>
         <a href="about.html" class="action-btn">ℹ️ Learn More</a>
       </div>
     </div>
@@ -191,7 +163,7 @@
     <div class="features-grid">
       <div class="feature-card">
         <h4>🗨️ Team Chat</h4>
-        <p>Stay connected with real-time group messaging</p>
+        <p>Stay connected with real-time team messaging</p>
       </div>
       <div class="feature-card">
         <h4>📅 Shared Calendar</h4>
@@ -199,15 +171,15 @@
       </div>
       <div class="feature-card">
         <h4>👥 Easy Setup</h4>
-        <p>Simple group codes make joining effortless</p>
+        <p>Simple team codes make joining effortless</p>
       </div>
     </div>
 
     <!-- Recent Activity -->
     <div id="home-recent-activity" class="recent-activity">
-      <h3>Your Recent Groups</h3>
+      <h3>Your Recent Teams</h3>
       <div id="home-recent-list">
-        <p>No recent groups. <a href="groupchats.html">Create or join one now!</a></p>
+        <p>No recent teams. <a href="groupchats.html">Create or join one now!</a></p>
       </div>
     </div>
   </main>
@@ -242,7 +214,7 @@
         const recentList = document.getElementById('home-recent-list');
         
         if (recentChats.length === 0) {
-          recentList.innerHTML = '<p>No recent groups. <a href="groupchats.html">Create or join one now!</a></p>';
+          recentList.innerHTML = '<p>No recent teams. <a href="groupchats.html">Create or join one now!</a></p>';
           return;
         }
         
@@ -270,6 +242,30 @@
         displayHomeRecentGroups();
       }
     });
+  </script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyDxQF7eqZ6cuOaSpdog4OEVb1hXoGt9a5M",
+      authDomain: "squadconnect-2853c.firebaseapp.com",
+      projectId: "squadconnect-2853c",
+      storageBucket: "squadconnect-2853c.firebasestorage.app",
+      messagingSenderId: "348023747133",
+      appId: "1:348023747133:web:247e868b59ff7e178ab054",
+      measurementId: "G-DL47FE7D2S"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
   </script>
 
 </body>
