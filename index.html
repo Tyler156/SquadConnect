@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="SquadConnect">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
 
   <link rel="icon" type="image/png" href="images/Favicon.png">
  
@@ -90,6 +90,30 @@
       </div>
     </div>
   </main>
+
+  <!-- Add to Home Screen Banner -->
+  <div id="addToHomeScreenBanner" style="
+    display:none;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#333;
+    color:#fff;
+    padding:12px 8px;
+    font-family:sans-serif;
+    text-align:center;
+    font-size:14px;
+    z-index:9999;">
+    <span>📱 Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install SquadConnect</span>
+    <button id="dismissBanner" style="
+      background:transparent;
+      border:none;
+      color:#fff;
+      font-size:16px;
+      margin-left:12px;
+      cursor:pointer;">✕</button>
+  </div>
 
   <!-- Footer with copyright information -->
   <footer>

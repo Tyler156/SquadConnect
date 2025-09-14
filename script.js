@@ -270,3 +270,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+ // detect iOS
+  function isIos() {
+    return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+  }
+
+  // detect if running in standalone (already installed)
+  function isInStandaloneMode() {
+    return ('standalone' in window.navigator) && window.navigator.standalone;
+  }
+
+  // show the banner if on iOS Safari and not installed
+  window.addEventListener('load', () => {
+    if (isIos() && !isInStandaloneMode()) {
+      document.getElementById('addToHomeScreenBanner').style.display = 'block';
+    }
+  });
+
+  // allow dismissing
+  document.getElementById('dismissBanner').addEventListener('click', () => {
+    document.getElementById('addToHomeScreenBanner').style.display = 'none';
+  });
