@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#FFFFFF">
 
   <!-- iOS specific -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="SquadConnect">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -121,6 +121,34 @@
   </footer>
 
 <script>
+
+     // detect iOS
+  function isIos() {
+    return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+  }
+
+  // detect if running in standalone (already installed)
+  function isInStandaloneMode() {
+    return ('standalone' in window.navigator) && window.navigator.standalone;
+  }
+
+  // show the banner if on iOS Safari and not installed
+  window.addEventListener('load', () => {
+    if (isIos() && !isInStandaloneMode()) {
+      
+      document.getElementById('addToHomeScreenBanner').style.display = 'block';
+    }
+  });
+
+  // allow dismissing
+  document.getElementById('dismissBanner').addEventListener('click', () => {
+    document.getElementById('addToHomeScreenBanner').style.display = 'none';
+  });
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
+
     // Check if user is logged in
     function checkAuth() {
       const currentUser = localStorage.getItem('squadconnect_current_user');
