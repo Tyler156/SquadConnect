@@ -292,3 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('dismissBanner').addEventListener('click', () => {
     document.getElementById('addToHomeScreenBanner').style.display = 'none';
   });
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js');
+  }
