@@ -64,13 +64,13 @@ class ChatManager {
         this.addToRecentChats(groupCode, this.currentGroup.name);
       } else {
         // Group doesn't exist so show error and go back
-        alert('Group not found!');
-        window.location.href = 'GroupChats.html';
+        alert('Team not found!');
+        window.location.href = 'groupchats.html';
       }
     } else {
       // No group code in web address so go back
-      alert('No group specified!');
-      window.location.href = 'GroupChats.html';
+      alert('No Team specified!');
+      window.location.href = 'groupchats.html';
     }
   }
 
@@ -419,11 +419,11 @@ class ChatManager {
       // Remove from recent chats for current user
       this.removeFromRecentChats(this.currentGroupCode);
       
-      alert('Group deleted successfully!');
-      window.location.href = 'GroupChats.html';
+      alert('Team deleted successfully!');
+      window.location.href = 'groupchats.html';
     } catch (error) {
-      console.error('Error deleting group:', error);
-      alert('Error deleting group. Please try again.');
+      console.error('Error deleting Team:', error);
+      alert('Error deleting Team. Please try again.');
     }
   }
 
@@ -433,7 +433,7 @@ class ChatManager {
       this.removeFromRecentChats(this.currentGroupCode);
       
       alert('You have left the chat!');
-      window.location.href = 'GroupChats.html';
+      window.location.href = 'groupchats.html';
     } catch (error) {
       console.error('Error leaving chat:', error);
       alert('Error leaving chat. Please try again.');

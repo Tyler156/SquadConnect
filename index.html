@@ -24,21 +24,13 @@
   <script src="nav.js"></script>
   <link rel="stylesheet" href="nav.css">
 
+ 
+
   <!-- Include the main styles for the website -->
   <link rel="stylesheet" href="styles.css">
 
   <title>SquadConnect</title>
-  <style>
-    /* This section controls how the website looks */
-    
-  
-    
 
-    
-    
-
-    
-  </style>
 
 </head>
 <body id="home-page">
@@ -49,18 +41,24 @@
   </header>
 
   
-
   <!-- The main content area -->
   <main>
     <!-- Welcome message explaining what the website does -->
     <h2>Welcome to SquadConnect</h2>
     
+    <!-- Recent Activity -->
+    <div id="home-recent-activity" class="recent-activity">
+      <h3>Your Teams</h3>
+      <div id="home-recent-list">
+        <p>You are not in a team. <br> <a href="/groupchats.html">Create or join one now!</a></p>
+      </div>
+    </div>
     
     <!-- Quick Actions Section -->
     <div class="quick-actions">
       <h3>Quick Actions</h3>
       <div class="action-buttons">
-        <a href="groupchats.html" class="action-btn">💬 Join Chat</a>
+        <a href="groupchats.html" class="action-btn">💬 Join Team</a>
         <a href="groupchats.html" class="action-btn">➕ Create Team</a>
         <a href="about.html" class="action-btn">ℹ️ Learn More</a>
       </div>
@@ -82,13 +80,7 @@
       </div>
     </div>
 
-    <!-- Recent Activity -->
-    <div id="home-recent-activity" class="recent-activity">
-      <h3>Your Recent Teams</h3>
-      <div id="home-recent-list">
-        <p>No recent teams. <a href="/groupchats.html">Create or join one now!</a></p>
-      </div>
-    </div>
+    
   </main>
 
   
@@ -126,7 +118,7 @@
         const recentList = document.getElementById('home-recent-list');
         
         if (recentChats.length === 0) {
-          recentList.innerHTML = '<p>No recent teams. <a href="groupchats.html">Create or join one now!</a></p>';
+          recentList.innerHTML = '<p>You are not in a team. <br> <a href="groupchats.html">Create or join one now!</a></p>';
           return;
         }
         
@@ -138,7 +130,7 @@
           
           groupDiv.innerHTML = `
             <div class="recent-group-name">${chat.name}</div>
-            <div class="recent-group-code">Code: ${chat.code}</div>
+            <div class="recent-group-code">Joining Code: ${chat.code}</div>
           `;
           
           recentList.appendChild(groupDiv);

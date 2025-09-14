@@ -194,7 +194,7 @@ function handleCreateGroup() {
   
   // If no name was entered, show an error message
   if (!groupName) {
-    alert('Please enter a group name');
+    alert('Please enter a Team name');
     return;
   }
 
@@ -217,7 +217,7 @@ function handleCreateGroup() {
       window.location.href = `chat.html?group=${groupCode}`;
     } else {
       // Show error if saving failed
-      alert('Error creating group. Please try again.');
+      alert('Error creating Team. Please try again.');
     }
   });
 }
@@ -231,7 +231,7 @@ function handleJoinGroup() {
   
   // If no code was entered, show error message
   if (!groupCode) {
-    alert('Please enter a group code');
+    alert('Please enter a Team code');
     return;
   }
 
@@ -249,7 +249,7 @@ function handleJoinGroup() {
       window.location.href = `chat.html?group=${groupCode}`;
     } else {
       // Show error if group code doesn't exist
-      alert('Invalid group code. Please check and try again.');
+      alert('Invalid Team code. Please check and try again.');
     }
   });
 }

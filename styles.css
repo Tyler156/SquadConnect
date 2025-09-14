@@ -32,7 +32,8 @@ body {
     /* Style for the main content area */
      
 main {
-    padding: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
     max-width: 800px;
     margin: auto;
     line-height: 1.6;
@@ -372,7 +373,7 @@ main {
 
 /* Recent Activity */
 .recent-activity {
-    margin: 40px 0;
+    margin: 20px 0;
     padding: 20px;
     background-color: #f5f5f5;
     border-radius: 8px;
@@ -408,8 +409,8 @@ main {
     text-align: center;
 }
 
-
-#input-join {
+/* Styles for the input box to join a group */
+.input-join {
     padding: 10px;
     margin: 10px 0;    
     max-width: 300px;
@@ -417,6 +418,8 @@ main {
     border: 1px solid #ddd;
     border-radius: 5px;
 }  
+
+    
 
 .button-join {
     background-color: #333;
@@ -435,31 +438,6 @@ main {
     background-color: #555;
 }
 
-#input-create {
-    padding: 10px;
-    margin: 10px 0;    
-    max-width: 300px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}  
-
-.button-create {
-    background-color: #333;
-    color: white;
-    cursor: pointer;
-    border: none;
-    width: 120px;
-    padding: 10px;
-    margin: 10px 0;
-    max-width: 300px;
-    font-size: 16px;
-    border-radius: 5px;
-}
-
-.button-create:hover {
-    background-color: #555;
-}
     
 
 /* Styles for boxes that show recent chat groups */
