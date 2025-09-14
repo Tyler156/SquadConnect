@@ -3,7 +3,7 @@
 <head>
 
   <!-- PWA manifest -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="./manifest.json">
   <meta name="theme-color" content="#FFFFFF">
 
   <!-- iOS specific -->
@@ -91,29 +91,7 @@
     </div>
   </main>
 
-  <!-- Add to Home Screen Banner -->
-  <div id="addToHomeScreenBanner" style="
-    display:none;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#333;
-    color:#fff;
-    padding:12px 8px;
-    font-family:sans-serif;
-    text-align:center;
-    font-size:14px;
-    z-index:9999;">
-    <span>📱 Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to install SquadConnect</span>
-    <button id="dismissBanner" style="
-      background:transparent;
-      border:none;
-      color:#fff;
-      font-size:16px;
-      margin-left:12px;
-      cursor:pointer;">✕</button>
-  </div>
+  
 
   <!-- Footer with copyright information -->
   <footer>
@@ -122,32 +100,7 @@
 
 <script>
 
-     // detect iOS
-  function isIos() {
-    return /iphone|ipad|ipod/i.test(window.navigator.userAgent);
-  }
 
-  // detect if running in standalone (already installed)
-  function isInStandaloneMode() {
-    return ('standalone' in window.navigator) && window.navigator.standalone;
-  }
-
-  // show the banner if on iOS Safari and not installed
-  window.addEventListener('load', () => {
-    if (isIos() && !isInStandaloneMode()) {
-      
-      document.getElementById('addToHomeScreenBanner').style.display = 'block';
-    }
-  });
-
-  // allow dismissing
-  document.getElementById('dismissBanner').addEventListener('click', () => {
-    document.getElementById('addToHomeScreenBanner').style.display = 'none';
-  });
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-  }
 
     // Check if user is logged in
     function checkAuth() {
