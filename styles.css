@@ -32,8 +32,8 @@ body {
     /* Style for the main content area */
      
 main {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
     max-width: 800px;
     margin: auto;
     line-height: 1.6;
@@ -148,7 +148,7 @@ main {
 /* Styles for the calendar button */
 .calendar-button {
     background-color: #4CAF50;
-    color: white;
+    color: black;
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
@@ -165,7 +165,7 @@ main {
 /* Styles for the delete/leave chat button */
 .delete-button {
     background-color: #f44336;
-    color: white;
+    color: black;
     border: none;
     padding: 8px 16px;
     border-radius: 5px;
@@ -470,7 +470,7 @@ main {
 
 /* Styles for the date when you last visited the chat */
 .chat-date {
-    color: #999;
+    color: #4e4e4e;
     font-size: 12px;
 }
     

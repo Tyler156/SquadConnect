@@ -40,8 +40,8 @@
   <main>
     <div id="login-form">
       <h2>Login</h2>
-      <input type="text" id="login-username" placeholder="Username" />
-      <input type="password" id="login-password" placeholder="Password" />
+      <input type="text" id="login-username" placeholder="Username" autocomplete="username" />
+      <input type="password" id="login-password" placeholder="Password" autocomplete="current-password"/>
       <button onclick="loginUser()">Login</button>
       <div id="login-error" class="error"></div>
       <div class="toggle-link" onclick="showSignup()">Don't have an account? Sign up</div>
@@ -49,9 +49,9 @@
 
     <div id="signup-form" style="display: none;">
       <h2>Create Account</h2>
-      <input type="text" id="signup-username" placeholder="Username" />
-      <input type="password" id="signup-password" placeholder="Password" />
-      <input type="password" id="signup-confirm" placeholder="Confirm Password" />
+      <input type="text" id="signup-username" placeholder="Username" autocomplete="off" />
+      <input type="password" id="signup-password" placeholder="Password" autocomplete="new-password"/>
+      <input type="password" id="signup-confirm" placeholder="Confirm Password" autocomplete="new-password"/>
       <button onclick="signupUser()">Create Account</button>
       <div id="signup-error" class="error"></div>
       <div class="toggle-link" onclick="showLogin()">Already have an account? Login</div>

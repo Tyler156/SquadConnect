@@ -68,7 +68,7 @@ class GroupManager {
       
       const dateDiv = document.createElement('div');
       dateDiv.className = 'chat-date';
-      dateDiv.textContent = `Last joined: ${new Date(chat.lastJoined).toLocaleDateString()}`;
+      dateDiv.textContent = `Last accessed: ${new Date(chat.lastJoined).toLocaleDateString()}`;
       
       const deleteBtn = document.createElement('button');
       deleteBtn.className = 'remove-chat-btn';
