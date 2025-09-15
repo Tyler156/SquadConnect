@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" href="images/Favicon.png">
   
   <!-- PWA manifest -->
@@ -19,29 +19,19 @@
   <link rel="stylesheet" href="styles.css">
 
   <title>SquadConnect - Login</title>
-
-  <style>
- 
-    
   
-    
-    
-    
-   
-  </style>
-
 </head>
 <body id="login-page">
 
   <header>
-    <h1><img src="images/logo.png" valign="middle" height="50" width="50" alt="SquadConnect Logo">  SquadConnect</h1>
+    <h1><img src="images/logo.png" height="50" width="50" alt="SquadConnect Logo">  SquadConnect</h1>
   </header>
 
   <main>
     <div id="login-form">
       <h2>Login</h2>
-      <input type="text" id="login-username" placeholder="Username" autocomplete="username" />
-      <input type="password" id="login-password" placeholder="Password" autocomplete="current-password"/>
+      <input type="text" id="login-username" placeholder="Username" autocomplete="username">
+      <input type="password" id="login-password" placeholder="Password" autocomplete="current-password">
       <button onclick="loginUser()">Login</button>
       <div id="login-error" class="error"></div>
       <div class="toggle-link" onclick="showSignup()">Don't have an account? Sign up</div>
@@ -49,9 +39,9 @@
 
     <div id="signup-form" style="display: none;">
       <h2>Create Account</h2>
-      <input type="text" id="signup-username" placeholder="Username" autocomplete="off" />
-      <input type="password" id="signup-password" placeholder="Password" autocomplete="new-password"/>
-      <input type="password" id="signup-confirm" placeholder="Confirm Password" autocomplete="new-password"/>
+      <input type="text" id="signup-username" placeholder="Username" autocomplete="off">
+      <input type="password" id="signup-password" placeholder="Password" autocomplete="new-password">
+      <input type="password" id="signup-confirm" placeholder="Confirm Password" autocomplete="new-password">
       <button onclick="signupUser()">Create Account</button>
       <div id="signup-error" class="error"></div>
       <div class="toggle-link" onclick="showLogin()">Already have an account? Login</div>
