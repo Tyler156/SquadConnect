@@ -18,17 +18,13 @@
   <meta charset="UTF-8">
   <!-- This makes the website work well on mobile phones -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- This is the title that shows up in the browser tab -->
 
-  <!-- Include the nav.js script and style sheet -->
-  <script src="nav.js"></script>
-  <link rel="stylesheet" href="nav.css">
-
- 
 
   <!-- Include the main styles for the website -->
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="nav.css">
 
+  <!-- This is the title that shows up in the browser tab -->
   <title>SquadConnect</title>
 
 
@@ -83,94 +79,15 @@
     
   </main>
 
-  
-
   <!-- Footer with copyright information -->
   <footer>
     <p>&copy; 2025 SquadConnect.</p>
   </footer>
 
-<script>
-
-
-
-    // Check if user is logged in
-    function checkAuth() {
-      const currentUser = localStorage.getItem('squadconnect_current_user');
-      if (!currentUser) {
-        window.location.href = 'login.html';
-        return false;
-      }
-      //document.getElementById('current-user').textContent = currentUser;
-      return true;
-    }
-
-    function logout() {
-      localStorage.removeItem('squadconnect_current_user');
-      window.location.href = 'login.html';
-    }
-
-    // Display recent groups on home page
-    function displayHomeRecentGroups() {
-      try {
-        const stored = localStorage.getItem('squadconnect_recent_chats');
-        const recentChats = stored ? JSON.parse(stored) : [];
-        const recentList = document.getElementById('home-recent-list');
-        
-        if (recentChats.length === 0) {
-          recentList.innerHTML = '<p>You are not in a team. <br> <a href="groupchats.html">Create or join one now!</a></p>';
-          return;
-        }
-        
-        recentList.innerHTML = '';
-        recentChats.slice(0, 3).forEach(chat => {
-          const groupDiv = document.createElement('div');
-          groupDiv.className = 'recent-group-item';
-          groupDiv.onclick = () => window.location.href = `chat.html?group=${chat.code}`;
-          
-          groupDiv.innerHTML = `
-            <div class="recent-group-name">${chat.name}</div>
-            <div class="recent-group-code">Joining Code: ${chat.code}</div>
-          `;
-          
-          recentList.appendChild(groupDiv);
-        });
-      } catch (error) {
-        console.error('Error displaying recent groups:', error);
-      }
-    }
-
-    // Load recent groups when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-      if (checkAuth()) {
-        displayHomeRecentGroups();
-      }
-    });
-  </script>
-
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyDxQF7eqZ6cuOaSpdog4OEVb1hXoGt9a5M",
-      authDomain: "squadconnect-2853c.firebaseapp.com",
-      projectId: "squadconnect-2853c",
-      storageBucket: "squadconnect-2853c.firebasestorage.app",
-      messagingSenderId: "348023747133",
-      appId: "1:348023747133:web:247e868b59ff7e178ab054",
-      measurementId: "G-DL47FE7D2S"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-  </script>
-
+  
+  <!-- This loads the JavaScript file  -->
+  <script src="index.js"></script>
+  <!-- Include the nav.js script and style sheet -->
+  <script src="nav.js"></script>
 </body>
 </html>

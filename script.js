@@ -6,6 +6,8 @@ class GroupManager {
     this.storage = localStorage;
   }
 
+  
+
   addToRecentChats(groupCode, groupName) {
     try {
       let recentChats = this.getRecentChats();
@@ -113,11 +115,13 @@ class GroupManager {
   }
 
   getUserName() {
-    let userName = this.storage.getItem('squadconnect_username');
+    let userName = this.storage.getItem('squadconnect_current_user');
     if (!userName) {
       userName = prompt('Enter your name:') || 'Anonymous';
       this.storage.setItem('squadconnect_username', userName);
     }
+    else
+      this.storage.setItem('squadconnect_username', userName);    
     return userName;
   }
 
