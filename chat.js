@@ -458,3 +458,11 @@ const chatManager = new ChatManager();
 function sendMessage() {
   chatManager.sendMessage();
 }
+
+const input = document.getElementById('message-input');
+const count = document.getElementById('message-count');
+const max = input.maxLength;
+
+input.addEventListener('input', () => {
+  count.textContent = `${input.value.length}/${max}`;
+});

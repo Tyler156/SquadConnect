@@ -38,6 +38,7 @@
       const username = document.getElementById('signup-username').value;
       const password = document.getElementById('signup-password').value;
       const confirm = document.getElementById('signup-confirm').value;
+      const passwordvalid = document.getElementById('password-message').value;
       if (!username || !password || !confirm) {
         document.getElementById('signup-error').textContent = 'Please fill in all fields';
         return;
@@ -46,6 +47,7 @@
         document.getElementById('signup-error').textContent = 'Passwords do not match';
         return;
       }
+      
       if (username.length < 3) {
         document.getElementById('signup-error').textContent = 'Username must be at least 3 characters';
         return;
@@ -69,3 +71,33 @@
     if (localStorage.getItem('squadconnect_current_user')) {
       window.location.href = 'index.html';
     }
+
+    function checkpassword(password) {
+         // Define your rules:
+        const minLength = password.length >= 8;                // At least 8 chars
+        const upperCase = /[A-Z]/.test(password);              // At least one uppercase
+        const lowerCase = /[a-z]/.test(password);              // At least one lowercase
+        const number = /[0-9]/.test(password);                 // At least one number
+        const specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password); // At least one special char
+
+        // Check all conditions
+        if (minLength && upperCase && lowerCase && number && specialChar) {
+        message.textContent = "✅ Strong password!";
+        message.style.color = "green";
+        } else {
+        message.textContent = "❌ Password must be 8+ chars, have upper & lower case, a number, and a special character.";
+        message.style.color = "red";
+
+        }
+    }
+
+
+    const passwordInput = document.getElementById('signup-password');
+    const message = document.getElementById('password-message');
+
+    passwordInput.addEventListener('input', () => {
+        checkpassword(passwordInput.value);
+
+       
+        }
+    );

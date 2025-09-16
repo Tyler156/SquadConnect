@@ -65,7 +65,8 @@
     <!-- Input area for typing and sending new messages -->
     <div class="message-input">
       <!-- Text box where users type their message -->
-      <input type="text" id="message-input" placeholder="Type your message..." autocomplete="off">
+      <input type="text" id="message-input" maxLength="300" placeholder="Type your message..." autocomplete="off">
+      <p id="message-count">0/300</p>
       <!-- Button to send the message -->
       <button onclick="sendMessage()">Send</button>
     </div>
@@ -106,7 +107,7 @@
       <div id="leader-controls" class="leader-controls" style="display: none;">
         <h4>Add Game/Event</h4>
         <!-- Input for the event name -->
-        <input type="text" id="event-title" placeholder="Event title">
+        <input type="text" id="event-title" placeholder="Event title" maxLength="30">
         <!-- Input for picking the event date -->
         <input type="date" id="event-date">
         <!-- Button to add the event to the calendar -->
